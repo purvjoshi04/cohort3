@@ -14,17 +14,14 @@ spec:
     spec:
       containers:
       - name: todo-backend
-        image: purvjoshi4/projects:todo-app-test-3
+        image: purvjoshi4/projects:todo-app-test-4
         ports:
         - containerPort: 3000
-        env:
-        - name: PORT
-          valueFrom:
-            configMapKeyRef:
-              name: backend-config
-              key: port
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: backend-secret
-              key: database_url
+        volumeMounts:
+          - name: env-file
+            readOnly: true
+            mountPath: "/app/secret"
+      volumes:
+      - name: env-file
+        secret:
+          secretName: backend-secret
