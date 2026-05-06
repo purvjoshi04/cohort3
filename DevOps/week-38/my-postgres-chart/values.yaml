@@ -1,0 +1,14 @@
+name: postgres
+namespace: postgres
+
+image:
+  repository: postgres
+  tag: "16"
+
+service:
+  port: 5432
+
+postgres:
+  user: user
+  password: password
+  database: mydb
