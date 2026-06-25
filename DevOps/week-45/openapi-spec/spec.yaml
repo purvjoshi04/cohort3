@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: TODO App
+  description: Create and get back todo
+  version: "1.0.0"
+servers:
+  - url: http://localhost:3000
+paths:
+  /signup:
+    post:
+      summary: Let's the user signup on the website
+      description: This is the signup endpoint that the user can hit to register on the website.
+      requestBody:
+        description: Username and password of the user signing up
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignupSchema"
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/SignupMessage'
+  /signin:
+    post:
+      summary: Let's the user signin on the website
+      description: This is the signin endpoint that the user can hit to register on the website.
+      requestBody:
+        description: Username and password of the user signing up
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SigninSchema"
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/SigninMessage'
+components:
+  schemas:
+    SignupSchema:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The username of the user signing up.
+        password:
+          type: string
+          description: The password of the user.
+      required:
+        - username
+        - password
+    SigninSchema:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The username of the user signing up.
+        password:
+          type: string
+          description: The password of the user.
+      required:
+        - username
+        - password
+    SignupMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Let's the user know they have signed up.
+    SigninMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Let's the user know they have signed up.
