@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+
+<body>
+    <script>
+        function callback(response) {
+            console.log("response from cloudflare");
+            console.log(response);
+        }
+    </script>
+    <div 
+    class="cf-turnstile"
+    data-sitekey=""
+    data-callback="callback"
+    >
+    </div>
+</body>
+
+</html>
